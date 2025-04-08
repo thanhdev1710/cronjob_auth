@@ -1,0 +1,5 @@
+.env*
+gen.yaml
+cronjob_auth
+storages/
+.vscode
