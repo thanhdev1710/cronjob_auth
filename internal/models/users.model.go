@@ -15,8 +15,8 @@ type User struct {
 	Status             string              `gorm:"type:varchar(10);default:inactive" json:"status"`
 	CreatedAt          time.Time           `gorm:"default:now()" json:"created_at"`
 	UpdatedAt          time.Time           `gorm:"default:now()" json:"updated_at"`
-	DeletedAt          *time.Time          `gorm:"default:now()" json:"deleted_at"`
-	Sessions           []Session           `gorm:"foreignKey:UserId" json:"sessions"`
-	OAuthProviders     []OAuthProvider     `gorm:"foreignKey:UserId" json:"oauth_providers"`
-	VerificationTokens []VerificationToken `gorm:"foreignKey:UserId" json:"verification_tokens"`
+	DeletedAt          *time.Time          `json:"deleted_at"`
+	Sessions           []Session           `gorm:"foreignKey:UserId;constraint:OnDelete:CASCADE" json:"sessions"`
+	OAuthProviders     []OAuthProvider     `gorm:"foreignKey:UserId;constraint:OnDelete:CASCADE" json:"oauth_providers"`
+	VerificationTokens []VerificationToken `gorm:"foreignKey:UserId;constraint:OnDelete:CASCADE" json:"verification_tokens"`
 }
